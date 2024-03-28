@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  APIops:
     runs-on: ubuntu-latest
     environment: apiMana
 
