@@ -1,0 +1,40 @@
+name: Run Python script on Azure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: apiMana
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install azure-cli
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Run Python script
+      run: python your-python-script.py
+      env:
+        clientId: ${{ secrets.CLIENT_ID }}
+        clientSecret: ${{ secrets.CLIENT_SECRET }}
+        resourceGroupName: ${{ secrets.RESOURCE_GROUP_NAME }}
+        apimServiceName: ${{ secrets.APIM_SERVICE_NAME }}
+        tenantId: ${{ secrets.TENANT_ID }}
+        subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
+ 
