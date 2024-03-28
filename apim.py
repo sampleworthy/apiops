@@ -49,3 +49,18 @@ for api_file in api_files:
 
     # Run the command
     subprocess.run(command, check=True)
+
+    # Specify the product ID
+    product_id = 'test-product'  # Replace with your actual product ID
+
+    # Construct the command to add the API to the product
+    command = [
+        'az', 'apim', 'product', 'api', 'add',
+        '--resource-group', resourceGroupName,
+        '--service-name', apimServiceName,
+        '--product-id', product_id,
+        '--api-id', api_name,
+    ]
+
+    # Run the command
+    subprocess.run(command, check=True)
