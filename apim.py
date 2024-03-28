@@ -17,8 +17,8 @@ baseUrl = f"https://management.azure.com/subscriptions/{subscriptionId}/resource
 # Get the directory containing the API specifications
 api_dir = 'apis'
 
-# Get a list of all .yaml files in the directory
-api_files = [f for f in os.listdir(api_dir) if f.endswith('.yaml')]
+# Get a list of all .yaml and .json files in the directory
+api_files = [f for f in os.listdir(api_dir) if f.endswith('.yaml') or f.endswith('.json')]
 
 # If no API files were found, exit the script
 if not api_files:
