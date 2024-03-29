@@ -1,26 +1,19 @@
 import os
 import subprocess
-from os import getenv, getcwd
 from dotenv import load_dotenv
-
 
 # Load the .env file
 load_dotenv('python/.env')
 
-# ENV VARS come from the pipeline
-clientId = getenv('clientId')
-clientSecret = getenv('clientSecret')
-resourceGroupName = getenv('resourceGroupName')
-apimServiceName = getenv('apimServiceName')
-tenantId = getenv('tenantId')
-subscriptionId = getenv('subscriptionId')
-resource = "https://management.azure.com/.default"
-azureApiVersion = "2021-08-01"
-baseUrl = f"https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{apimServiceName}"
-
-# Get the product ID and product name from the .env file
-product_id = getenv('PRODUCT_ID')
-product_name = getenv('PRODUCT_NAME')
+# Get environment variables
+clientId = os.getenv('clientId')
+clientSecret = os.getenv('clientSecret')
+resourceGroupName = os.getenv('resourceGroupName')
+apimServiceName = os.getenv('apimServiceName')
+tenantId = os.getenv('tenantId')
+subscriptionId = os.getenv('subscriptionId')
+product_id = os.getenv('PRODUCT_ID')
+product_name = os.getenv('PRODUCT_NAME')
 
 # Construct the command to create the product in APIM
 command = [
