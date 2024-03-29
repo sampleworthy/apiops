@@ -1,36 +1,42 @@
 name: Run Python script
 
 on:
-  workflow_dispatch:
+    workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
+        environment: apiMana
 
-    steps:
-    - uses: actions/checkout@v2
+        steps:
+        - uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.8'
+        - name: Set up Python
+          uses: actions/setup-python@v2
+          with:
+                python-version: '3.8'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install python-dotenv
-        sudo apt-get update
-        sudo apt-get install azure-cli
+        - name: Install dependencies
+          run: |
+                python -m pip install --upgrade pip
+                pip install python-dotenv
+                sudo apt-get update
+                sudo apt-get install azure-cli
 
-    - name: Change to script directory and run Python script
-      run: |
-          cd python
-          python products.py
-      env:
-          clientId: ${{ secrets.CLIENT_ID }}
-          clientSecret: ${{ secrets.CLIENT_SECRET }}
-          resourceGroupName: ${{ secrets.RESOURCE_GROUP_NAME }}
-          apimServiceName: ${{ secrets.APIM_SERVICE_NAME }}
-          tenantId: ${{ secrets.TENANT_ID }}
-          subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
+        - name: Azure Login
+          uses: azure/login@v1
+          with:
+                creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+        - name: Change to script directory and run Python script
+          run: |
+                    cd python
+                    python products.py
+          env:
+                    clientId: ${{ secrets.CLIENT_ID }}
+                    clientSecret: ${{ secrets.CLIENT_SECRET }}
+                    resourceGroupName: ${{ secrets.RESOURCE_GROUP_NAME }}
+                    apimServiceName: ${{ secrets.APIM_SERVICE_NAME }}
+                    tenantId: ${{ secrets.TENANT_ID }}
+                    subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
  
