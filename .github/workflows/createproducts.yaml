@@ -22,16 +22,15 @@ jobs:
         sudo apt-get update
         sudo apt-get install azure-cli
 
-    - name: Change to script directory
-      run: cd python
-
-    - name: Run Python script
-      run: python products.py
-    env:
-            clientId: ${{ secrets.CLIENT_ID }}
-            clientSecret: ${{ secrets.CLIENT_SECRET }}
-            resourceGroupName: ${{ secrets.RESOURCE_GROUP_NAME }}
-            apimServiceName: ${{ secrets.APIM_SERVICE_NAME }}
-            tenantId: ${{ secrets.TENANT_ID }}
-            subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
+    - name: Change to script directory and run Python script
+      run: |
+          cd python
+          python products.py
+      env:
+          clientId: ${{ secrets.CLIENT_ID }}
+          clientSecret: ${{ secrets.CLIENT_SECRET }}
+          resourceGroupName: ${{ secrets.RESOURCE_GROUP_NAME }}
+          apimServiceName: ${{ secrets.APIM_SERVICE_NAME }}
+          tenantId: ${{ secrets.TENANT_ID }}
+          subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
  
