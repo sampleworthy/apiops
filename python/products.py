@@ -13,8 +13,10 @@ resourceGroupName = os.getenv('resourceGroupName')
 apimServiceName = os.getenv('apimServiceName')
 tenantId = os.getenv('tenantId')
 subscriptionId = os.getenv('subscriptionId')
-product_id = os.getenv('PRODUCT_ID')
-product_name = os.getenv('PRODUCT_NAME')
+
+# Define product_id and product_name directly in the code
+product_id = 'GithubProduct'
+product_name = 'Github Product'
 
 # Print the environment variables to debug
 print(f"clientId: {clientId}")
