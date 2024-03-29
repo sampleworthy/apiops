@@ -1,0 +1,697 @@
+openapi: 3.0.1
+info:
+  title: products-apis
+  version: '1.0'
+servers:
+  - url: https://apim-apif.azure-api.net/products
+paths:
+  '/PriceHistory/product/{productId}':
+    get:
+      tags:
+        - PriceHistory
+      summary: '/PriceHistory/product/{productId} - GET'
+      operationId: get-pricehistory-product-productid
+      parameters:
+        - name: productId
+          in: path
+          description: Format - uuid.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PriceHistoryViewModel'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PriceHistoryViewModel'
+              example:
+                - id: string
+                  newPrice: 0
+                  changeDate: string
+                  productId: string
+                  productName: string
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PriceHistoryViewModel'
+              example:
+                - id: string
+                  newPrice: 0
+                  changeDate: string
+                  productId: string
+                  productName: string
+  /ProductCategories:
+    get:
+      tags:
+        - ProductCategories
+      summary: /ProductCategories - GET
+      operationId: get-productcategories
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryViewModel'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryViewModel'
+              example:
+                - name: string
+                  description: string
+                  id: string
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryViewModel'
+              example:
+                - name: string
+                  description: string
+                  id: string
+    post:
+      tags:
+        - ProductCategories
+      summary: /ProductCategories - POST
+      operationId: post-productcategories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryCreateModel'
+            example:
+              name: string
+              description: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CategoryCreateModel'
+            example:
+              name: string
+              description: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CategoryCreateModel'
+            example:
+              name: string
+              description: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CategoryViewModel'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryViewModel'
+              example:
+                name: string
+                description: string
+                id: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CategoryViewModel'
+              example:
+                name: string
+                description: string
+                id: string
+  '/ProductCategories/{id}':
+    get:
+      tags:
+        - ProductCategories
+      summary: '/ProductCategories/{id} - GET'
+      operationId: get-productcategories-id
+      parameters:
+        - name: id
+          in: path
+          description: Format - uuid.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CategoryViewModel'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryViewModel'
+              example:
+                name: string
+                description: string
+                id: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CategoryViewModel'
+              example:
+                name: string
+                description: string
+                id: string
+    put:
+      tags:
+        - ProductCategories
+      summary: '/ProductCategories/{id} - PUT'
+      operationId: put-productcategories-id
+      parameters:
+        - name: id
+          in: path
+          description: Format - uuid.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryUpdateModel'
+            example:
+              name: string
+              description: string
+              id: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CategoryUpdateModel'
+            example:
+              name: string
+              description: string
+              id: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CategoryUpdateModel'
+            example:
+              name: string
+              description: string
+              id: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CategoryViewModel'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryViewModel'
+              example:
+                name: string
+                description: string
+                id: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CategoryViewModel'
+              example:
+                name: string
+                description: string
+                id: string
+    delete:
+      tags:
+        - ProductCategories
+      summary: '/ProductCategories/{id} - DELETE'
+      operationId: delete-productcategories-id
+      parameters:
+        - name: id
+          in: path
+          description: Format - uuid.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+  /Products:
+    get:
+      tags:
+        - Products
+      summary: /Products - GET
+      operationId: get-products
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductViewModel'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductViewModel'
+              example:
+                - name: string
+                  description: string
+                  price: 0
+                  categoryId: string
+                  id: string
+                  categoryName: string
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductViewModel'
+              example:
+                - name: string
+                  description: string
+                  price: 0
+                  categoryId: string
+                  id: string
+                  categoryName: string
+    post:
+      tags:
+        - Products
+      summary: /Products - POST
+      operationId: post-products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreateModel'
+            example:
+              name: string
+              description: string
+              price: 0
+              categoryId: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreateModel'
+            example:
+              name: string
+              description: string
+              price: 0
+              categoryId: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ProductCreateModel'
+            example:
+              name: string
+              description: string
+              price: 0
+              categoryId: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductViewModel'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductViewModel'
+              example:
+                name: string
+                description: string
+                price: 0
+                categoryId: string
+                id: string
+                categoryName: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductViewModel'
+              example:
+                name: string
+                description: string
+                price: 0
+                categoryId: string
+                id: string
+                categoryName: string
+  '/Products/{id}':
+    get:
+      tags:
+        - Products
+      summary: '/Products/{id} - GET'
+      operationId: get-products-id
+      parameters:
+        - name: id
+          in: path
+          description: Format - uuid.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductViewModel'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductViewModel'
+              example:
+                name: string
+                description: string
+                price: 0
+                categoryId: string
+                id: string
+                categoryName: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductViewModel'
+              example:
+                name: string
+                description: string
+                price: 0
+                categoryId: string
+                id: string
+                categoryName: string
+    put:
+      tags:
+        - Products
+      summary: '/Products/{id} - PUT'
+      operationId: put-products-id
+      parameters:
+        - name: id
+          in: path
+          description: Format - uuid.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductUpdateModel'
+            example:
+              name: string
+              description: string
+              price: 0
+              categoryId: string
+              id: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ProductUpdateModel'
+            example:
+              name: string
+              description: string
+              price: 0
+              categoryId: string
+              id: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ProductUpdateModel'
+            example:
+              name: string
+              description: string
+              price: 0
+              categoryId: string
+              id: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProductViewModel'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductViewModel'
+              example:
+                name: string
+                description: string
+                price: 0
+                categoryId: string
+                id: string
+                categoryName: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProductViewModel'
+              example:
+                name: string
+                description: string
+                price: 0
+                categoryId: string
+                id: string
+                categoryName: string
+    delete:
+      tags:
+        - Products
+      summary: '/Products/{id} - DELETE'
+      operationId: delete-products-id
+      parameters:
+        - name: id
+          in: path
+          description: Format - uuid.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+  '/RankHistory/product/{productId}':
+    get:
+      tags:
+        - RankHistory
+      summary: '/RankHistory/product/{productId} - GET'
+      operationId: get-rankhistory-product-productid
+      parameters:
+        - name: productId
+          in: path
+          description: Format - uuid.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RankHistoryViewModel'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RankHistoryViewModel'
+              example:
+                - id: string
+                  rank: 0
+                  date: string
+                  productId: string
+                  productName: string
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RankHistoryViewModel'
+              example:
+                - id: string
+                  rank: 0
+                  date: string
+                  productId: string
+                  productName: string
+components:
+  schemas:
+    CategoryCreateModel:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CategoryUpdateModel:
+      required:
+        - id
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        id:
+          type: string
+          format: uuid
+      additionalProperties: false
+    CategoryViewModel:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        id:
+          type: string
+          format: uuid
+      additionalProperties: false
+    PriceHistoryViewModel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        newPrice:
+          type: number
+          format: double
+        changeDate:
+          type: string
+          format: date-time
+        productId:
+          type: string
+          format: uuid
+        productName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ProductCreateModel:
+      required:
+        - categoryId
+        - name
+        - price
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        price:
+          type: number
+          format: double
+        categoryId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    ProductUpdateModel:
+      required:
+        - categoryId
+        - id
+        - name
+        - price
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        price:
+          type: number
+          format: double
+        categoryId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+      additionalProperties: false
+    ProductViewModel:
+      required:
+        - categoryId
+        - name
+        - price
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        price:
+          type: number
+          format: double
+        categoryId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        categoryName:
+          type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    RankHistoryViewModel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        rank:
+          type: integer
+          format: int32
+        date:
+          type: string
+          format: date-time
+        productId:
+          type: string
+          format: uuid
+        productName:
+          type: string
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

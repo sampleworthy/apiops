@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+import glob
 from os import getenv
 
 # ENV VARS come from the pipeline
@@ -17,8 +18,8 @@ baseUrl = f"https://management.azure.com/subscriptions/{subscriptionId}/resource
 # Get the directory containing the API specifications
 api_dir = 'apis'
 
-# Get a list of all .yaml and .json files in the directory
-api_files = [f for f in os.listdir(api_dir) if f.endswith('.yaml') or f.endswith('.json')]
+# Get a list of all .yaml and .json files in the directory and subdirectories
+api_files = glob.glob('apis/**/*.yaml', recursive=True) + glob.glob('apis/**/*.json', recursive=True)
 
 # If no API files were found, exit the script
 if not api_files:
@@ -28,10 +29,10 @@ if not api_files:
 # Loop over each API file
 for api_file in api_files:
     # Construct the full path to the API file
-    api_path = os.path.join(api_dir, api_file)
+    api_path = api_file
 
-    # Extract the base name of the API file (without the .yaml extension)
-    api_name = os.path.splitext(api_file)[0]
+    # Extract the base name of the API file (without the .yaml or .json extension)
+    api_name = os.path.splitext(os.path.basename(api_file))[0]
 
     # Construct the command to import the API into APIM
     command = [
