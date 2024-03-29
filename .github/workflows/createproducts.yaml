@@ -39,6 +39,4 @@ jobs:
                     apimServiceName: ${{ secrets.APIM_SERVICE_NAME }}
                     tenantId: ${{ secrets.TENANT_ID }}
                     subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
-                    product_id: ${{ secrets.PRODUCT_ID }}
-                    product_name: ${{ secrets.PRODUCT_NAME }}
- 
+
