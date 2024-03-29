@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: PeopleAPI
-  description: Import from "myfunc" Function App
+  description: This sample openapi file that was created for testing. 
   version: '1.0'
 servers:
   - url: https://apimana.azure-api.net/peopleapi
