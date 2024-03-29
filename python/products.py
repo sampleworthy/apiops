@@ -4,10 +4,6 @@ from os import getenv, getcwd
 from dotenv import load_dotenv
 
 
-# Check if the script is run inside a folder named 'python'
-if '/python' not in os.getcwd():
-    raise Exception("This script must be run inside a folder named 'python'")
-
 # Load the .env file
 load_dotenv('python/.env')
 
