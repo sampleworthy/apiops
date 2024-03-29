@@ -2,10 +2,12 @@ name: Run Policies Script
 
 on:
     workflow_dispatch:
+    
 
 jobs:
     build:
         runs-on: ubuntu-latest
+        environment: apiMana
 
         steps:
         - uses: actions/checkout@v2
