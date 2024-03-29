@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    CreateAPIProduct:
+    build:
         runs-on: ubuntu-latest
         environment: apiMana
 
@@ -22,7 +22,6 @@ jobs:
                 pip install python-dotenv
                 sudo apt-get update
                 sudo apt-get install azure-cli
-
         - name: Azure Login
           uses: azure/login@v1
           with:

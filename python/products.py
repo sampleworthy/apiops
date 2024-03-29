@@ -1,6 +1,10 @@
 import os
 import subprocess
 from os import getenv
+from dotenv import load_dotenv
+
+# Load the .env file
+load_dotenv('python/.env')
 
 # Get environment variables
 clientId = os.getenv('clientId')
@@ -11,8 +15,8 @@ tenantId = os.getenv('tenantId')
 subscriptionId = os.getenv('subscriptionId')
 
 # Define product_id and product_name directly in the code
-product_id = 'BetaProduct'
-product_name = 'Beta Product'
+product_id = 'GithubProducts'
+product_name = 'Github Products'
 
 # Print the environment variables to debug
 print(f"clientId: {clientId}")
