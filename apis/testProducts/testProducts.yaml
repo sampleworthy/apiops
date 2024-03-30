@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: PeopleAPI
   description: This sample openapi file that was created for testing. 
-  version: '1.0'
+  version: '2.0'
 servers:
   - url: https://apimana.azure-api.net/peopleapi
 paths:
