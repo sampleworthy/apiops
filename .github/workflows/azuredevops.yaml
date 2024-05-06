@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: apiMana
 
     steps:
     - name: Checkout code
@@ -25,3 +26,4 @@ jobs:
 
     - name: Logout of Azure
       run: az logout
+
