@@ -1,6 +1,7 @@
 name: Create Azure Resource Group
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
